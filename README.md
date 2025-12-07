@@ -13,7 +13,9 @@ This repository serves as the monorepo for NusaBiz application. It encompasses t
 | Service        | Description                                                                                                                                                      |
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **NusaBiz-FE** | Frontend application built with React + Vite + TypeScript. Provides the user interface for business management, transactions, products, and AI-powered features. |
-| **NusaBiz-BE** | Backend API service built with Express.js + TypeScript. Handles authentication, business logic, and integrates with Supabase database and Kolosal AI.            |
+| **NusaBiz-BE** | Backend API service built with Express.js + TypeScript. Handles authentication, business logic, and integrates with Supabase database and Kolosal AI.   |
+
+Live Demo : <a href="https://nusa-biz-fe.vercel.app">Click Here</a>
 
 ## 🚀 Features
 
