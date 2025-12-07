@@ -90,7 +90,95 @@ cd NusaBiz
    ```bash
    npm install
    ```
+5. Database Schema (Supabase):
+```mermaid
+   erDiagram
+  Users {
+    uuid id PK
+    varchar email
+    varchar full_name
+    varchar whatsapp_number
+    timestamp created_at
+    timestamp updated_at
+    timestamp deleted_at
+    text image
+  }
 
+  Businesses {
+    bigint id PK
+    varchar business_name
+    varchar category
+    varchar location
+    numeric current_balance
+    timestamp created_at
+    timestamp updated_at
+    timestamp deleted_at
+    uuid user_id FK
+  }
+
+  Chat {
+    bigint id PK
+    timestamp created_at
+    timestamp updated_at
+    timestamp deleted_at
+    uuid user_id FK
+  }
+
+  Messages {
+    bigint id PK
+    text content
+    string sender
+    bigint chat_id FK
+    timestamp created_at
+    timestamp deleted_at
+  }
+
+  Products {
+    bigint id PK
+    bigint business_id FK
+    varchar name
+    int current_stock
+    numeric purchase_price
+    numeric selling_price
+    string stock_status
+    bigint base_stock
+    text description
+    text image
+    timestamp created_at
+    timestamp updated_at
+    timestamp deleted_at
+  }
+
+  Transactions {
+    bigint id PK
+    bigint business_id FK
+    timestamp transaction_date
+    string type
+    varchar category
+    numeric amount
+    text description
+    string status
+    timestamp created_at
+    timestamp updated_at
+    timestamp deleted_at
+  }
+
+  TransactionDetails {
+    bigint id PK
+    bigint transaction_id FK
+    bigint product_id FK
+    int quantity
+    numeric unit_price_at_transaction
+  }
+
+  Users ||--o{ Businesses : owns
+  Users ||--o{ Chat : has
+  Chat ||--o{ Messages : contains
+  Businesses ||--o{ Products : has
+  Businesses ||--o{ Transactions : has
+  Transactions ||--o{ TransactionDetails : has
+  Products ||--o{ TransactionDetails : contains
+```
 ### Frontend Setup
 
 1. Navigate to frontend directory:
